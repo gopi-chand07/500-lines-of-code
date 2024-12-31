@@ -1,0 +1,563 @@
+# 1
+import random
+# 2
+import math
+# 3
+import string
+# 4
+
+# 5
+def generate_random_string(length):
+    """Generate a random string of fixed length."""
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(length))
+
+# 6
+def factorial(n):
+    """Return the factorial of a number."""
+    return 1 if n == 0 else n * factorial(n-1)
+
+# 7
+def is_prime(num):
+    """Check if a number is prime."""
+    if num <= 1:
+        return False
+    for i in range(2, int(math.sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+# 8
+class Dog:
+    """A class representing a dog."""
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(f"{self.name} says Woof!")
+
+# 9
+class Cat:
+    """A class representing a cat."""
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def meow(self):
+        print(f"{self.name} says Meow!")
+
+# 10
+class Person:
+    """A class representing a person."""
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.pets = []
+
+    def add_pet(self, pet):
+        self.pets.append(pet)
+
+    def introduce(self):
+        print(f"Hello, my name is {self.name}, and I am {self.age} years old.")
+
+# 11
+def fibonacci(n):
+    """Return the nth Fibonacci number."""
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+# 12
+def merge_sorted_lists(list1, list2):
+    """Merge two sorted lists into one sorted list."""
+    result = []
+    i, j = 0, 0
+    while i < len(list1) and j < len(list2):
+        if list1[i] < list2[j]:
+            result.append(list1[i])
+            i += 1
+        else:
+            result.append(list2[j])
+            j += 1
+    result.extend(list1[i:])
+    result.extend(list2[j:])
+    return result
+
+# 13
+def binary_search(arr, target):
+    """Perform binary search to find the target in a sorted array."""
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# 14
+def count_vowels(s):
+    """Count the number of vowels in a string."""
+    vowels = "aeiouAEIOU"
+    return sum(1 for char in s if char in vowels)
+
+# 15
+def reverse_string(s):
+    """Reverse a given string."""
+    return s[::-1]
+
+# 16
+def merge_sort(arr):
+    """Sort an array using the merge sort algorithm."""
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge_sorted_lists(left, right)
+
+# 17
+def quick_sort(arr):
+    """Sort an array using the quick sort algorithm."""
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+# 18
+def bubble_sort(arr):
+    """Sort an array using the bubble sort algorithm."""
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+# 19
+def insertion_sort(arr):
+    """Sort an array using the insertion sort algorithm."""
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+# 20
+def selection_sort(arr):
+    """Sort an array using the selection sort algorithm."""
+    for i in range(len(arr)):
+        min_idx = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+# 21
+def sum_of_digits(n):
+    """Return the sum of digits of a number."""
+    return sum(int(digit) for digit in str(n))
+
+# 22
+def gcd(a, b):
+    """Return the greatest common divisor of two numbers using Euclid's algorithm."""
+    while b:
+        a, b = b, a % b
+    return a
+
+# 23
+def lcm(a, b):
+    """Return the least common multiple of two numbers."""
+    return abs(a * b) // gcd(a, b)
+
+# 24
+def is_palindrome(s):
+    """Check if a string is a palindrome."""
+    return s == s[::-1]
+
+# 25
+def to_uppercase(s):
+    """Convert a string to uppercase."""
+    return s.upper()
+
+# 26
+def to_lowercase(s):
+    """Convert a string to lowercase."""
+    return s.lower()
+
+# 27
+def capitalize_words(s):
+    """Capitalize the first letter of each word in a string."""
+    return ' '.join(word.capitalize() for word in s.split())
+
+# 28
+def count_occurrences(lst, val):
+    """Count the number of occurrences of a value in a list."""
+    return lst.count(val)
+
+# 29
+def remove_duplicates(lst):
+    """Remove duplicates from a list."""
+    return list(set(lst))
+
+# 30
+def flatten(lst):
+    """Flatten a nested list into a single list."""
+    flat_list = []
+    for item in lst:
+        if isinstance(item, list):
+            flat_list.extend(flatten(item))
+        else:
+            flat_list.append(item)
+    return flat_list
+
+# 31
+def unique_elements(lst):
+    """Return a list of unique elements from the input list."""
+    return list(set(lst))
+
+# 32
+def sort_dict_by_value(d):
+    """Sort a dictionary by its values."""
+    return dict(sorted(d.items(), key=lambda item: item[1]))
+
+# 33
+def add_key_value(d, key, value):
+    """Add a key-value pair to a dictionary."""
+    d[key] = value
+
+# 34
+def remove_key(d, key):
+    """Remove a key from a dictionary."""
+    if key in d:
+        del d[key]
+
+# 35
+def merge_dicts(d1, d2):
+    """Merge two dictionaries."""
+    merged = d1.copy()
+    merged.update(d2)
+    return merged
+
+# 36
+def dict_to_list(d):
+    """Convert a dictionary to a list of tuples."""
+    return list(d.items())
+
+# 37
+def list_to_dict(lst):
+    """Convert a list of tuples into a dictionary."""
+    return dict(lst)
+
+# 38
+def get_keys(d):
+    """Get the keys of a dictionary."""
+    return list(d.keys())
+
+# 39
+def get_values(d):
+    """Get the values of a dictionary."""
+    return list(d.values())
+
+# 40
+def find_max(lst):
+    """Find the maximum value in a list."""
+    return max(lst)
+
+# 41
+def find_min(lst):
+    """Find the minimum value in a list."""
+    return min(lst)
+
+# 42
+def sum_of_list(lst):
+    """Find the sum of elements in a list."""
+    return sum(lst)
+
+# 43
+def product_of_list(lst):
+    """Find the product of elements in a list."""
+    product = 1
+    for num in lst:
+        product *= num
+    return product
+
+# 44
+def is_sorted(lst):
+    """Check if a list is sorted in ascending order."""
+    return lst == sorted(lst)
+
+# 45
+def is_all_positive(lst):
+    """Check if all elements in a list are positive."""
+    return all(num > 0 for num in lst)
+
+# 46
+def is_any_negative(lst):
+    """Check if any element in a list is negative."""
+    return any(num < 0 for num in lst)
+
+# 47
+def rotate_list(lst, n):
+    """Rotate a list by n positions."""
+    return lst[n:] + lst[:n]
+
+# 48
+def zip_lists(list1, list2):
+    """Zip two lists together."""
+    return list(zip(list1, list2))
+
+# 49
+def unzip_list(lst):
+    """Unzip a list of tuples into two lists."""
+    return list(zip(*lst))
+
+# 50
+def intersect_lists(list
+# 51
+import os
+# 52
+import json
+# 53
+import datetime
+# 54
+import time
+# 55
+import urllib.request
+# 56
+
+# 57
+def read_file(file_path):
+    """Read content from a file."""
+    try:
+        with open(file_path, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"The file {file_path} does not exist.")
+        return None
+
+# 58
+def write_file(file_path, content):
+    """Write content to a file."""
+    with open(file_path, 'w') as file:
+        file.write(content)
+
+# 51
+import os
+# 52
+import json
+# 53
+import datetime
+# 54
+import time
+# 55
+import urllib.request
+# 56
+
+# 57
+def read_file(file_path):
+    """Read content from a file."""
+    try:
+        with open(file_path, 'r') as file:
+            return file.read()
+    except FileNotFoundError:
+        print(f"The file {file_path} does not exist.")
+        return None
+
+# 58
+def write_file(file_path, content):
+    """Write content to a file."""
+    with open(file_path, 'w') as file:
+        file.write(content)
+
+# 59
+def append_to_file(file_path, content):
+    """Append content to an existing file."""
+    with open(file_path, 'a') as file:
+        file.write(content)
+
+# 60
+def file_exists(file_path):
+    """Check if a file exists."""
+    return os.path.isfile(file_path)
+
+# 61
+def read_json(file_path):
+    """Read a JSON file and return the data."""
+    try:
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except json.JSONDecodeError:
+        print("Error decoding JSON.")
+        return None
+    except FileNotFoundError:
+        print(f"File {file_path} not found.")
+        return None
+
+# 62
+def write_json(file_path, data):
+    """Write data to a JSON file."""
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+    except Exception as e:
+        print(f"Error writing JSON: {e}")
+
+# 63
+def get_current_time():
+    """Return the current date and time."""
+    return datetime.datetime.now()
+
+# 64
+def format_time(dt):
+    """Format a datetime object into a readable string."""
+    return dt.strftime("%Y-%m-%d %H:%M:%S")
+
+# 65
+def sleep_for_seconds(seconds):
+    """Pause the program for a certain number of seconds."""
+    time.sleep(seconds)
+
+# 66
+def fetch_url(url):
+    """Fetch content from a URL."""
+    try:
+        response = urllib.request.urlopen(url)
+        return response.read().decode()
+    except urllib.error.URLError as e:
+        print(f"Error fetching URL: {e}")
+        return None
+
+# 67
+def process_data(data):
+    """Process a list of integers and return a summary."""
+    return {
+        'max': max(data),
+        'min': min(data),
+        'mean': sum(data) / len(data) if data else 0,
+        'sum': sum(data),
+    }
+
+# 68
+def reverse_words_in_string(s):
+    """Reverse the words in a string."""
+    return ' '.join(s.split()[::-1])
+
+# 69
+def remove_whitespace(s):
+    """Remove leading and trailing whitespace from a string."""
+    return s.strip()
+
+# 70
+def convert_to_integer(s):
+    """Convert a string to an integer."""
+    try:
+        return int(s)
+    except ValueError:
+        print(f"'{s}' is not a valid integer.")
+        return None
+
+# 71
+def convert_to_float(s):
+    """Convert a string to a float."""
+    try:
+        return float(s)
+    except ValueError:
+        print(f"'{s}' is not a valid float.")
+        return None
+
+# 72
+def is_valid_email(email):
+    """Check if an email is valid."""
+    import re
+    return bool(re.match(r"[^@]+@[^@]+\.[^@]+", email))
+
+# 73
+def count_occurrences_of_word(text, word):
+    """Count the occurrences of a word in a text."""
+    return text.lower().split().count(word.lower())
+
+# 74
+def extract_email_addresses(text):
+    """Extract email addresses from a text."""
+    import re
+    return re.findall(r"[^@]+@[^@]+\.[^@]+", text)
+
+# 75
+def create_empty_dict():
+    """Create and return an empty dictionary."""
+    return {}
+
+# 76
+def merge_two_dicts(d1, d2):
+    """Merge two dictionaries and return the result."""
+    return {**d1, **d2}
+
+# 77
+def get_keys_from_dict(d):
+    """Get a list of keys from a dictionary."""
+    return list(d.keys())
+
+# 78
+def get_values_from_dict(d):
+    """Get a list of values from a dictionary."""
+    return list(d.values())
+
+# 79
+def find_common_elements(list1, list2):
+    """Find the common elements between two lists."""
+    return list(set(list1) & set(list2))
+
+# 80
+def find_difference(list1, list2):
+    """Find the difference between two lists."""
+    return list(set(list1) - set(list2))
+
+# 81
+def union_of_lists(list1, list2):
+    """Find the union of two lists."""
+    return list(set(list1) | set(list2))
+
+# 82
+def intersection_of_lists(list1, list2):
+    """Find the intersection of two lists."""
+    return list(set(list1) & set(list2))
+
+# 83
+def difference_of_lists(list1, list2):
+    """Find the difference of two lists."""
+    return list(set(list1) - set(list2))
+
+# 84
+def cartesian_product(list1, list2):
+    """Return the Cartesian product of two lists."""
+    return [(x, y) for x in list1 for y in list2]
+
+# 85
+def create_matrix(rows, cols, value=0):
+    """Create a matrix with a given number of rows and columns filled with a specific value."""
+    return [[value] * cols for _ in range(rows)]
+
+# 86
+def transpose_matrix(matrix):
+    """Transpose a matrix."""
+    return [list(row) for row in zip(*matrix)]
+
+# 87
+def flatten_matrix(matrix):
+    """Flatten a 2D matrix into a 1D list."""
+    return [item for row in matrix for item in row]
+
+# 88
+def add_matrices(matrix1, matrix2):
+    """Add two matrices element-wise."""
+    return [
+        [matrix1[i][j] + mat
+
